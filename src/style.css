@@ -1,0 +1,82 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    overflow: hidden;
+    color: ivory;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+video
+{
+    display: none;
+}
+
+.overlay
+{
+    /* background-color: black; */
+    /* opacity: 50%; */
+    position: absolute;
+    backdrop-filter: blur(100px);
+    /* background-color: black; */
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-family: 'Gloock', helvetica;
+    letter-spacing: .2rem;
+    text-shadow: .1rem .1rem 1rem rgb(255, 148, 148);
+}
+
+.titleText
+{
+    display: flex;
+    position: absolute;
+    /* width: 100%; */
+    font-size: 10rem;
+    text-align: left;
+    flex-direction: column;
+    /* padding: 1rem;
+    border: solid ivory .1rem; */
+}
+
+.slideContainer
+{
+    position: fixed;
+    bottom: 3rem;
+    left: 3rem;
+
+}
+
+.slideTitle
+{
+    font-size: 10rem;
+    text-decoration: underline .1rem;
+}
+
+.slideDescription
+{
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: .05rem;
+}
+
+.char {
+    transform: translateY(300px);
+    transition: transform .5s;
+}
