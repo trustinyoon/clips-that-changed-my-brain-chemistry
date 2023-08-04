@@ -21,6 +21,14 @@ body
         align-items: center;
 }
 
+.audioButton {
+    width: 100px;
+    height: 100px;
+    color: ivory;
+    stroke: ivory;
+    /* background-color: blue; */
+}
+
 .custom-cursor {
     position: absolute;
     border-radius: 100%;
@@ -86,13 +94,13 @@ video
 
 .enterButton {
     border: solid ivory 0.1rem;
-    box-shadow: 0.1rem 0.1rem 1rem rgb(255, 148, 148);
     padding: 1rem;
     text-align: center;
-    text-shadow: 0.1rem 0.1rem 1rem rgb(198, 117, 117);
     width: 10rem;
     overflow: hidden;
     position: relative;
+    color: ivory;
+    text-shadow: none;
 }
 
 .enterButton::before {
@@ -103,12 +111,15 @@ video
     width: 0;
     height: 100%;
     background-color: rgba(255, 255, 240, 0.034);
+    box-shadow: 0.1rem 0.1rem 1rem rgb(255, 148, 148);
+    text-shadow: 0.1rem 0.1rem 1rem rgb(198, 117, 117);
     transition: width 0.3s ease-in-out;
 }
 
 /* Apply the hover effect */
 .enterButton:hover::before {
     width: 100%;
+
 }
 
 .slideContainer

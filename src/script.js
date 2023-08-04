@@ -31,7 +31,35 @@ const slideTitleElement = document.getElementsByClassName("slideTitle")[0];
 const slideDescriptionElement = document.getElementsByClassName("slideDescription")[0];
 const slideContainer = document.querySelector('.slideContainer');
 const miscContainer = document.querySelector('.miscContainer');
+const audioButton = document.querySelector('.audioButton');
 
+let audioButtonOptions = {
+    width: audioButton.offsetWidth,
+    height: audioButton.offsetHeight,
+    midY: audioButton.offsetHeight / 2,
+    points: 80,
+    stretch: 10,
+    sinHeight: 0,
+    speed: -0.1,
+    strokeColor: 'ivory',
+    strokeWidth: 2,
+    power: false,
+}
+
+audioButton.width = audioButtonOptions.width * 2;
+audioButton.height = audioButtonOptions.height * 2;
+audioButton.style.width = audioButtonOptions.width;
+audioButton.style.height = audioButtonOptions.height;
+
+const audioButtonCtx = audioButton.getContext('2d');
+audioButtonCtx.scale(2, 2);
+
+audioButtonCtx.strokeStyle = audioButtonOptions.strokeColor;
+audioButtonCtx.lineWidth = audioButtonOptions.strokeWidth;
+audioButtonCtx.lineCap = 'round';
+audioButtonCtx.lineJoin = 'round';
+
+let audioTime = 0;
 
 // Create GSAP Timeline
 const tl = gsap.timeline();
@@ -75,7 +103,8 @@ enterButton.addEventListener('mouseover', () => {
     //gsap animation to make cursorstylewidth bigger
     gsap.to(customCursor, {
         duration: 0.2,
-        scale: 3,
+        scale: 5,
+        backgroundColor: 'rgba(255, 255, 240, 1)',
         overwrite: 'auto',
         })
 });
@@ -84,6 +113,7 @@ enterButton.addEventListener('mouseout', () => {
     gsap.to(customCursor, {
         duration: 0.2,
         scale: 1,
+        backgroundColor: 'ivory',
         overwrite: 'auto',
         })
 });
@@ -115,7 +145,7 @@ slideTitleElement.addEventListener('mouseover', () => {
     if (linkHoverReady) {
         gsap.to(customCursor, {
             duration: 0.2,
-            scale: 3,
+            scale: 5,
             overwrite: 'auto',
             })
     }
@@ -128,6 +158,28 @@ slideTitleElement.addEventListener('mouseout', () => {
             scale: 1,
             overwrite: 'auto',
             })
+    }
+});
+
+audioButton.addEventListener('click', () => {
+    audioButtonOptions.power = !audioButtonOptions.power;
+
+    if (audioButtonOptions.power) {
+        gallery.forEach((slide) => {
+            slide.element.muted = false;
+        });
+        gsap.to(audioButtonOptions, {
+            sinHeight: 4,
+            stretch: 5,
+            ease: "power2.easeInOut"})
+    } else {
+        gallery.forEach((slide) => {
+            slide.element.muted = true;
+        });
+        gsap.to(audioButtonOptions, {
+            sinHeight: 0,
+            stretch: 10,
+            ease: "power2.easeInOut"})
     }
 });
 
@@ -309,6 +361,28 @@ let firstSlideAnimated = false;
 
 const tick = () =>
 {
+    // Update audio button
+    audioButtonCtx.clearRect(0, 0, audioButtonOptions.width, audioButtonOptions.height);
+    audioTime += 1;
+    audioButtonCtx.beginPath();
+    let increment = 0;
+
+    for (let i=0; i < audioButtonOptions.points; i++) {
+        if (i < audioButtonOptions.points / 2) {
+            increment += 0.1;
+        } else {
+            increment -= 0.1;
+        }
+
+        const x = (audioButtonOptions.width / audioButtonOptions.points) * i;
+        const y = audioButtonOptions.midY + Math.sin(audioTime * audioButtonOptions.speed + i / audioButtonOptions.stretch) * audioButtonOptions.sinHeight * increment;
+        audioButtonCtx.lineTo(x, y);
+    }
+
+    audioButtonCtx.stroke();
+
+    // SLIDE ANIMATION
+
     time += 0.05;
     position += speed;
     speed *= 0.7;
@@ -332,8 +406,7 @@ const tick = () =>
 
     let currentTextSlide = Math.abs(Math.round(position) % gallery.length);
 
-    
-    gallery[currentSlide].element.muted = false
+    audioButtonOptions.power ? gallery[currentSlide].element.muted = false : gallery[currentSlide].element.muted = true;
     
     // Mute all other videos
     for (let i = 0; i < gallery.length; i++) {
