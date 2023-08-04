@@ -4,6 +4,7 @@ import * as dat from 'lil-gui'
 import testVertexShader from './shaders/test/vertex.glsl'
 import testFragmentShader from './shaders/test/fragment.glsl'
 import { gsap } from 'gsap'
+import VanillaTilt from 'vanilla-tilt'
 
 
 /**
@@ -22,6 +23,15 @@ const sizes = {
     width: window.innerWidth,
     height: window.innerHeight
 }
+
+// HTML Elements
+let linkHoverReady = false;
+
+const slideTitleElement = document.getElementsByClassName("slideTitle")[0];
+const slideDescriptionElement = document.getElementsByClassName("slideDescription")[0];
+const slideContainer = document.querySelector('.slideContainer');
+const miscContainer = document.querySelector('.miscContainer');
+
 
 // Create GSAP Timeline
 const tl = gsap.timeline();
@@ -44,48 +54,87 @@ document.addEventListener('mousemove', (event) => {
 
     // Update the position of the custom cursor
     gsap.to(customCursor, {
-        duration: 0.2, // Adjust the duration as needed for a smoother or faster animation
+        duration: 0.2,
         left: event.clientX,
         top: event.clientY,
-        overwrite: 'auto', // Allow overlapping animations to smoothly merge
+        overwrite: 'auto',
     });
-
 
     // Use gsap.to for smoother animation with easing
     gsap.to(cameraRotation, {
-        duration: 1, // Adjust the duration as needed
+        duration: 1,
         x: targetRotationX,
         y: targetRotationY,
-        ease: 'power2.out', // Use any easing function from GSAP, 'power2.out' provides a smooth finish
+        ease: 'power2.out'
     });
 });
 
 const enterButton = document.querySelector('.enterButton');
 
 enterButton.addEventListener('mouseover', () => {
-    customCursor.style.width = '1rem'; // Increase the width to make the cursor bigger
-    customCursor.style.height = '1rem'; // Increase the height to make the cursor bigger
+    //gsap animation to make cursorstylewidth bigger
+    gsap.to(customCursor, {
+        duration: 0.2,
+        scale: 3,
+        overwrite: 'auto',
+        })
 });
 
 enterButton.addEventListener('mouseout', () => {
-    customCursor.style.width = '0.5rem'; // Restore the original width
-    customCursor.style.height = '0.5rem'; // Restore the original height
+    gsap.to(customCursor, {
+        duration: 0.2,
+        scale: 1,
+        overwrite: 'auto',
+        })
 });
 
 enterButton.addEventListener('click', () => {
     gallery.forEach((slide) => {
         slide.element.play();
+        // unmute all videos
+        slide.element.muted = false;
     });
     
     tl
         .to(".overlay", {duration: 3, backdropFilter: "blur(0px)"})
-        .to(".enterButton", {duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => { enterButton.remove() } }, "-=3")
+        .to(".enterButton", {duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => {  } }, "-=3")
         .to(".titleText", {duration: .5, fontSize: "1rem", ease: "sine.inOut"}, "-=1.5")
         .to(".miscContainer", {duration: .8, top: "1rem", ease: "sine.inOut"}, "-=.85")
         .to(".miscContainer", {duration: .8, left: "1rem", ease: "sine.inOut"}, "-=.85")
-        .to(".overlay", { duration: 1, backgroundColor: 'rgba(0,0,0,0', ease: "sine.inOut", onComplete: () => { overlayReady = true } }, "-=.85")
+        .to(".overlay", { duration: 1, backgroundColor: 'rgba(0,0,0,0', ease: "sine.inOut", onComplete: () => 
+            { 
+                overlayReady = true
+                enterButton.remove()
+                slideTitleElement.style.display = "block"
+                slideDescriptionElement.style.display = "block"
+                linkHoverReady = true
+            } }, "-=.85")
 });
 
+slideTitleElement.addEventListener('mouseover', () => {
+    if (linkHoverReady) {
+        gsap.to(customCursor, {
+            duration: 0.2,
+            scale: 3,
+            overwrite: 'auto',
+            })
+    }
+});
+
+slideTitleElement.addEventListener('mouseout', () => {
+    if (linkHoverReady) {
+        gsap.to(customCursor, {
+            duration: 0.2,
+            scale: 1,
+            overwrite: 'auto',
+            })
+    }
+});
+
+VanillaTilt.init(document.querySelector(".tilt"), {
+    max: 3,
+    speed: 100
+});
 
 /**
  * Test mesh
@@ -284,7 +333,7 @@ const tick = () =>
     let currentTextSlide = Math.abs(Math.round(position) % gallery.length);
 
     
-    // gallery[currentSlide].element.muted = false
+    gallery[currentSlide].element.muted = false
     
     // Mute all other videos
     for (let i = 0; i < gallery.length; i++) {
@@ -307,8 +356,6 @@ const tick = () =>
     // ...
 
     // Add this code inside your Three.js tick function
-    const slideTitleElement = document.getElementsByClassName("slideTitle")[0];
-    const slideDescriptionElement = document.getElementsByClassName("slideDescription")[0];
 
     if (currentTextSlide !== prevTextSlide) {
         animateTextChange(slideTitleElement, gallery[currentTextSlide].title);
