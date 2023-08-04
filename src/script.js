@@ -85,7 +85,7 @@ async function loadVideoData(videoElement) {
 
 function createVideoTexture(videoElementID) {
     const videoElement = document.getElementById(videoElementID);
-    videoElement.play();
+    // videoElement.play();
 
     const videoTexture = new THREE.VideoTexture(videoElement);
     videoTexture.minFilter = THREE.LinearFilter;
@@ -227,26 +227,6 @@ document.addEventListener('wheel', (e) => {
     speed += e.deltaY * 0.0003;
 })
 
-
-function getFirstDigitAfterDecimal(number) {
-    // Convert the number to a string
-    const numberString = number.toString();
-
-    // Find the index of the decimal point
-    const decimalIndex = numberString.indexOf('.');
-
-    // Check if the decimal point exists in the number and there is a digit after it
-    if (decimalIndex !== -1 && decimalIndex + 1 < numberString.length) {
-        // Extract the character next to the decimal point
-        const digit = parseInt(numberString[decimalIndex + 1], 10);
-
-        return digit;
-    }
-
-    // Return 0 if there is no decimal point or no digit after it
-    return 0;
-}
-
 let prevTextSlide = 0;
 let firstSlideAnimated = false;
 
@@ -353,8 +333,9 @@ resizer();
 const tl = gsap.timeline();
 
 // TIMELINE ANIMATION
-tl.to(".overlay", {duration: 3, backdropFilter: "blur(0px)"})
-    .to(".titleText", {duration: .8, fontSize: "1rem", ease: "sine.inOut"})
-    .to(".titleText", {duration: .8, top: "1rem", ease: "sine.inOut"}, "-=.85")
-    .to(".titleText", {duration: .8, left: "1rem", ease: "sine.inOut"}, "-=.85")
+tl
+// tl.to(".overlay", {duration: 3, backdropFilter: "blur(0px)"})
+//    tl.to(".titleText", {duration: .8, fontSize: "1rem", ease: "sine.inOut"})
+    // .to(".titleText", {duration: .8, top: "1rem", ease: "sine.inOut"}, "-=.85")
+    // .to(".titleText", {duration: .8, left: "1rem", ease: "sine.inOut"}, "-=.85")
     .to(".overlay" , {duration: 1, backgroundColor: 'rgba(0,0,0,0', ease: "sine.inOut", onComplete: () => {overlayReady = true} }, "-=.85")

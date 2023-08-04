@@ -72,7 +72,7 @@ video
 }
 
 .slideContainer
-{
+{   
     position: fixed;
     bottom: 4rem;
     margin: .1rem;
@@ -88,6 +88,7 @@ video
 
 .slideTitle
 {
+    display: none;
     font-size: 10rem;
     text-decoration: underline .1rem;
     text-align: center;
@@ -97,6 +98,7 @@ video
 
 .slideDescription
 {
+    display: none;
     font-size: .75rem;
     font-weight: 500;
     letter-spacing: .05rem;
@@ -144,6 +146,9 @@ video
     .slideTitle {
         font-size: 3rem;
     }
+    .slideDescription {
+        font-size: .5rem;
+    }
 }
 
 @media (max-width: 350px) {
@@ -152,5 +157,8 @@ video
     }
     .slideTitle {
         font-size: 3rem;
+    }
+    .slideDescription {
+        font-size: .5rem;
     }
 }
