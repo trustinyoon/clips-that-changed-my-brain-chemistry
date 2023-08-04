@@ -9,6 +9,22 @@ body
 {
     overflow: hidden;
     color: ivory;
+    cursor: none;
+}
+
+.custom-cursor {
+    position: absolute;
+    border-radius: 100%;
+    width: .5rem;
+    /* Adjust the width of your custom cursor image */
+    height: .5rem;
+    /* Adjust the height of your custom cursor image */
+    background-color: ivory;
+    pointer-events: none;
+    z-index: 10000;
+    box-shadow: .1rem .1rem 1rem rgb(255, 148, 148);
+        /* Add a box shadow to create the shadow effect */
+    /* Make sure the custom cursor doesn't interfere with mouse interactions */
 }
 
 .webgl

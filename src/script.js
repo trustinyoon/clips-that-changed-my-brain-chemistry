@@ -27,14 +27,36 @@ const sizes = {
 const mouse = new THREE.Vector2();
 const cameraRotation = new THREE.Vector2();
 
+const customCursor = document.createElement('div');
+customCursor.className = 'custom-cursor';
+document.body.appendChild(customCursor);
+
 document.addEventListener('mousemove', (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
     // Adjust sensitivity and limit the tilt angles as needed
-    cameraRotation.x = THREE.MathUtils.clamp(mouse.y * 0.5, -Math.PI / 4, Math.PI / 4);
-    cameraRotation.y = mouse.x * 0.5;
+    const targetRotationX = THREE.MathUtils.clamp(mouse.y * 0.5, -Math.PI / 4, Math.PI / 4);
+    const targetRotationY = mouse.x * 0.5;
+
+    // Update the position of the custom cursor
+    gsap.to(customCursor, {
+        duration: 0.2, // Adjust the duration as needed for a smoother or faster animation
+        left: event.clientX,
+        top: event.clientY,
+        overwrite: 'auto', // Allow overlapping animations to smoothly merge
+    });
+
+
+    // Use gsap.to for smoother animation with easing
+    gsap.to(cameraRotation, {
+        duration: 1, // Adjust the duration as needed
+        x: targetRotationX,
+        y: targetRotationY,
+        ease: 'power2.out', // Use any easing function from GSAP, 'power2.out' provides a smooth finish
+    });
 });
+
 
 
 /**
