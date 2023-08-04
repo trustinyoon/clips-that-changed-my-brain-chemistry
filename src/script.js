@@ -23,6 +23,9 @@ const sizes = {
     height: window.innerHeight
 }
 
+// Create GSAP Timeline
+const tl = gsap.timeline();
+
 // MOUSE
 const mouse = new THREE.Vector2();
 const cameraRotation = new THREE.Vector2();
@@ -57,6 +60,31 @@ document.addEventListener('mousemove', (event) => {
     });
 });
 
+const enterButton = document.querySelector('.enterButton');
+
+enterButton.addEventListener('mouseover', () => {
+    customCursor.style.width = '1rem'; // Increase the width to make the cursor bigger
+    customCursor.style.height = '1rem'; // Increase the height to make the cursor bigger
+});
+
+enterButton.addEventListener('mouseout', () => {
+    customCursor.style.width = '0.5rem'; // Restore the original width
+    customCursor.style.height = '0.5rem'; // Restore the original height
+});
+
+enterButton.addEventListener('click', () => {
+    gallery.forEach((slide) => {
+        slide.element.play();
+    });
+    
+    tl
+        .to(".overlay", {duration: 3, backdropFilter: "blur(0px)"})
+        .to(".enterButton", {duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => { enterButton.remove() } }, "-=3")
+        .to(".titleText", {duration: .5, fontSize: "1rem", ease: "sine.inOut"}, "-=1.5")
+        .to(".miscContainer", {duration: .8, top: "1rem", ease: "sine.inOut"}, "-=.85")
+        .to(".miscContainer", {duration: .8, left: "1rem", ease: "sine.inOut"}, "-=.85")
+        .to(".overlay", { duration: 1, backgroundColor: 'rgba(0,0,0,0', ease: "sine.inOut", onComplete: () => { overlayReady = true } }, "-=.85")
+});
 
 
 /**
@@ -328,14 +356,3 @@ tick()
 
 // HTML
 resizer();
-
-// Create GSAP Timeline
-const tl = gsap.timeline();
-
-// TIMELINE ANIMATION
-tl
-// tl.to(".overlay", {duration: 3, backdropFilter: "blur(0px)"})
-//    tl.to(".titleText", {duration: .8, fontSize: "1rem", ease: "sine.inOut"})
-    // .to(".titleText", {duration: .8, top: "1rem", ease: "sine.inOut"}, "-=.85")
-    // .to(".titleText", {duration: .8, left: "1rem", ease: "sine.inOut"}, "-=.85")
-    .to(".overlay" , {duration: 1, backgroundColor: 'rgba(0,0,0,0', ease: "sine.inOut", onComplete: () => {overlayReady = true} }, "-=.85")

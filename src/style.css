@@ -59,16 +59,49 @@ video
     text-shadow: .1rem .1rem 1rem rgb(198, 117, 117);
 }
 
-.titleText
+.miscContainer 
 {
     display: flex;
-    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleText
+{
+    /* position: absolute; */
     /* width: 100%; */
     font-size: 10rem;
     text-align: center;
-    flex-direction: column;
     /* padding: 1rem;
     border: solid ivory .1rem; */
+}
+
+.enterButton {
+    border: solid ivory 0.1rem;
+    box-shadow: 0.1rem 0.1rem 1rem rgb(255, 148, 148);
+    padding: 1rem;
+    text-align: center;
+    text-shadow: 0.1rem 0.1rem 1rem rgb(198, 117, 117);
+    width: 10rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.enterButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(255, 255, 240, 0.034);
+    transition: width 0.3s ease-in-out;
+}
+
+/* Apply the hover effect */
+.enterButton:hover::before {
+    width: 100%;
 }
 
 .slideContainer
