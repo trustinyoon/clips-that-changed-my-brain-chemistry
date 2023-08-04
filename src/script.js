@@ -99,8 +99,8 @@ enterButton.addEventListener('click', () => {
         .to(".overlay", {duration: 3, backdropFilter: "blur(0px)"})
         .to(".enterButton", {duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => {  } }, "-=3")
         .to(".titleText", {duration: .5, fontSize: "1rem", ease: "sine.inOut"}, "-=1.5")
-        .to(".miscContainer", {duration: .8, top: "1rem", ease: "sine.inOut"}, "-=.85")
-        .to(".miscContainer", {duration: .8, left: "1rem", ease: "sine.inOut"}, "-=.85")
+        .to(".miscContainer", {duration: .8, top: "1rem", ease: "sine.inOut"}, "-=1.5")
+        .to(".miscContainer", {duration: .8, left: "1rem", ease: "sine.inOut"}, "-=1.5")
         .to(".overlay", { duration: 1, backgroundColor: 'rgba(0,0,0,0', ease: "sine.inOut", onComplete: () => 
             { 
                 overlayReady = true
