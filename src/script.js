@@ -127,7 +127,7 @@ enterButton.addEventListener('click', () => {
     });
     
     tl
-        .to(".overlay", {duration: 3, backdropFilter: "blur(0px)"})
+        .to(".overlay", {duration: 3, backdropFilter: "blur(1px)"})
         .to(".enterButton", {duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => {  } }, "-=3")
         .to(".titleText", {duration: .5, fontSize: "1rem", ease: "sine.inOut"}, "-=1.5")
         .to(".miscContainer", {duration: .8, top: "1rem", ease: "sine.inOut"}, "-=1.5")
@@ -248,6 +248,7 @@ const nujabesTexture = createVideoTexture('nujabes');
 const kendrickTexture = createVideoTexture('kendrick');
 const zeroTexture = createVideoTexture('zero');
 const tysonTexture = createVideoTexture('tyson');
+const africaBeatTexture = createVideoTexture('africaBeat');
 
 
 
@@ -257,6 +258,12 @@ const gallery = [
         texture: kanyeTexture,
         title: "Prelaunch",
         description: `"I’m not gonna say there’s no way that I could fail, but with God’s blessings, it shouldn’t be no way for me to lose really." -  Kanye West in 2003 on his upcoming debut album, The College Dropout`
+    },
+    {
+        element: document.getElementById('africaBeat'),
+        texture: africaBeatTexture,
+        title: "Roots",
+        description: `meep`
     },
     {
         element: document.getElementById('nujabes'),
