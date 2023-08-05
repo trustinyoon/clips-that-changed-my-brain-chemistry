@@ -43,7 +43,7 @@ let audioButtonOptions = {
     speed: -0.1,
     strokeColor: 'ivory',
     strokeWidth: 2,
-    power: false,
+    power: true,
 }
 
 audioButton.width = audioButtonOptions.width * 2;
@@ -119,6 +119,7 @@ enterButton.addEventListener('mouseout', () => {
 });
 
 enterButton.addEventListener('click', () => {
+
     gallery.forEach((slide) => {
         slide.element.play();
         // unmute all videos
@@ -160,6 +161,23 @@ slideTitleElement.addEventListener('mouseout', () => {
             })
     }
 });
+
+audioButton.addEventListener('mouseover', () => {
+    gsap.to(customCursor, {
+        duration: 0.2,
+        scale: 5,
+        backgroundColor: 'black',
+        overwrite: 'auto',
+    })
+});
+
+audioButton.addEventListener('mouseout', () => {
+    gsap.to(customCursor, {
+        duration: 0.2,
+        scale: 1,
+        backgroundColor: 'ivory',
+        overwrite: 'auto',
+    })});
 
 audioButton.addEventListener('click', () => {
     audioButtonOptions.power = !audioButtonOptions.power;
@@ -226,6 +244,7 @@ function createVideoTexture(videoElementID) {
 
 const kobeTexture = createVideoTexture('kobe');
 const kanyeTexture = createVideoTexture('kanye');
+const nujabesTexture = createVideoTexture('nujabes');
 const kendrickTexture = createVideoTexture('kendrick');
 const zeroTexture = createVideoTexture('zero');
 const tysonTexture = createVideoTexture('tyson');
@@ -238,6 +257,12 @@ const gallery = [
         texture: kanyeTexture,
         title: "Prelaunch",
         description: `"I’m not gonna say there’s no way that I could fail, but with God’s blessings, it shouldn’t be no way for me to lose really." -  Kanye West in 2003 on his upcoming debut album, The College Dropout`
+    },
+    {
+        element: document.getElementById('nujabes'),
+        texture: nujabesTexture,
+        title: "Nujabes",
+        description: `n`
     },
     {
         element: document.getElementById('kendrick'),
@@ -308,7 +333,7 @@ function resizer () {
 
     let dist = camera.position.z - mesh.position.z;
     let height = 1;
-    camera.fov = 2 * (180 / Math.PI) * Math.atan(height / (2 * dist));
+    // camera.fov = 2 * (180 / Math.PI) * Math.atan(height / (2 * dist));
 
     const aspectRatio = sizes.width / sizes.height;
     mesh.scale.x = sizes.width / sizes.height;
@@ -324,7 +349,7 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(0, 0, .5)
+camera.position.set(0, 0, .3)
 camera.rotation.set(0, 0, 0)
 
 scene.add(camera)
