@@ -208,6 +208,19 @@ video
 
 }
 
+.slideTopRightInfo 
+{
+    position: fixed;
+    top: 4rem;
+    right: 4rem;
+    font-size: .8rem;    
+}
+
+.slideDate
+{
+ 
+}
+
 .slideTitle
 {
     display: none;

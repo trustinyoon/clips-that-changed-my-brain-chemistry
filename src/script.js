@@ -32,6 +32,8 @@ let linkHoverReady = false;
 
 const slideTitleElement = document.getElementsByClassName("slideTitle")[0];
 const slideDescriptionElement = document.getElementsByClassName("slideDescription")[0];
+const slideDateElement = document.querySelector(".slideDate");
+const slideCreatorElement = document.querySelector(".slideCreator");
 const slideContainer = document.querySelector('.slideContainer');
 const miscContainer = document.querySelector('.miscContainer');
 const audioButton = document.querySelector('.audioButton');
@@ -133,8 +135,8 @@ enterButton.addEventListener('click', () => {
         .to(".overlay", {duration: 3, backdropFilter: "blur(1px)"})
         .to(".enterButton", {duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => {  } }, "-=3")
         .to(".titleText", {duration: .5, fontSize: "1rem", ease: "sine.inOut"}, "-=1.5")
-        .to(".miscContainer", {duration: .8, top: "1rem", ease: "sine.inOut"}, "-=1.5")
-        .to(".miscContainer", {duration: .8, left: "1rem", ease: "sine.inOut"}, "-=1.5")
+        .to(".miscContainer", {duration: .8, top: "4rem", ease: "sine.inOut"}, "-=1.5")
+        .to(".miscContainer", {duration: .8, left: "4rem", ease: "sine.inOut"}, "-=1.5")
         .to(".overlay", { duration: 1, backgroundColor: 'rgba(0,0,0,0', ease: "sine.inOut", onComplete: () => 
             { 
                 overlayReady = true
@@ -258,50 +260,90 @@ const gallery = [
         element: document.getElementById('kanye'),
         texture: kanyeTexture,
         title: "Prelaunch",
-        description: `"I’m not gonna say there’s no way that I could fail, but with God’s blessings, it shouldn’t be no way for me to lose really." -  Kanye West in 2003 on his upcoming debut album, The College Dropout`
+        description: `"I’m not gonna say there’s no way that I could fail, but with God’s blessings, it shouldn’t be no way for me to lose really." -  Kanye West in 2003 on his upcoming debut album, The College Dropout`,
+        date: "circa2002",
+        source: "",
+        mobilePic: "",
+        creator: "Jeen-Yuhs",
+
     },
     {
         element: document.getElementById('easy'),
         texture: easyTexture,
         title: "Easy",
         description: `Go easy on me, Father. I am still your child. And I need the chance to, 
-        Feel your love around me, And today I choose You, the way, the truth. So go easy on me.`
+        Feel your love around me, And today I choose You, the way, the truth. So go easy on me.`,
+        date: "11/28/2021",
+        source: "https://www.youtube.com/watch?v=V9xlMDxrp0A&ab_channel=robbie",
+        mobilePic: "",
+        creator: "Sunday Service Choir",
+
     },
     {
         element: document.getElementById('africaBeat'),
         texture: africaBeatTexture,
         title: "Roots",
-        description: `meep`
+        description: `meep`,
+        date: "",
+        source: "",
+        mobilePic: "",
+        creator: "",
+
     },
     {
         element: document.getElementById('nujabes'),
         texture: nujabesTexture,
         title: "Nujabes",
-        description: `Father of lofi hip hop. `
+        description: `Perfect vibes paying tribute to the father of lofi hip hop. RIP.`,
+        date: "03/02/2020",
+        source: "https://www.youtube.com/watch?v=LcbTSLZl9hs&ab_channel=FutureArtsNow",
+        mobilePic: "",
+        creator: "Retro Ronin",
+
     },
     {
         element: document.getElementById('kendrick'),
         texture: kendrickTexture,
         title: "Alright",
-        description: "We gon be alright"
+        description: "We gon be alright",
+        date: "",
+        source: "",
+        mobilePic: "",
+        creator: "",
+
     },
     {
         element: document.getElementById('kobe'),
         texture: kobeTexture,
         title: "Job finished",
-        description: "Kobe drops 60 in his final game before retirement, scoring the Lakers' last 17 points to come back and win the game in 2016."
+        description: "Kobe drops 60 in his final game before retirement, scoring the Lakers' last 17 points to come back and win the game in 2016.",
+        date: "",
+        source: "",
+        mobilePic: "",
+        creator: "",
+
     },
     {
         element: document.getElementById('zero'),
         texture: zeroTexture,
         title: "Elysian",
-        description: "Caught the ebike bug right after moving to SF in Feb 2022."
+        description: "Caught the ebike bug right after moving to SF in Feb 2022.",
+        date: "",
+        source: "",
+        mobilePic: "",
+        creator: "",
+
     },
     {
         element: document.getElementById('tyson'),
         texture: tysonTexture,
         title: "Poet",
-        description: `"I trained probably, two weeks or three weeks for this for this fight. I had to bury my best friend, and I dedicate this fight—I wasn't going to fight—I dedicate this fight to him. I was gonna rip his heart out, I'm the best ever. I'm the most brutal and vicious and most ruthless champion there's ever been, there's no one can stop me. Lennox is a conqueror? No, I'm Alexander—he's no Alexander. I'm the best ever. There's never been anybody as ruthless. I'm Sonny Liston, I'm Jack Dempsey, there's no one like—I'm from their cloth. There's no one that can match me. My style is﻿ impetuous, my defense is impregnable, and I'm just ferocious. I want your heart, I want to eat his children. Praise be to Allah." - Mike Tyson post fight Lewis vs Tyson 2002.`
+        description: `"I trained probably, two weeks or three weeks for this for this fight. I had to bury my best friend, and I dedicate this fight—I wasn't going to fight—I dedicate this fight to him. I was gonna rip his heart out, I'm the best ever. I'm the most brutal and vicious and most ruthless champion there's ever been, there's no one can stop me. Lennox is a conqueror? No, I'm Alexander—he's no Alexander. I'm the best ever. There's never been anybody as ruthless. I'm Sonny Liston, I'm Jack Dempsey, there's no one like—I'm from their cloth. There's no one that can match me. My style is﻿ impetuous, my defense is impregnable, and I'm just ferocious. I want your heart, I want to eat his children. Praise be to Allah."`,
+        date: "06/24/2000",
+        source: "",
+        mobilePic: "",
+        creator: "",
+
     }
 ]
 
@@ -479,10 +521,14 @@ const tick = () =>
     if (currentTextSlide !== prevTextSlide) {
         animateTextChange(slideTitleElement, gallery[currentTextSlide].title);
         animateTextChange(slideDescriptionElement, gallery[currentTextSlide].description);
+        animateTextChange(slideDateElement, gallery[currentTextSlide].date);
+        animateTextChange(slideCreatorElement, gallery[currentTextSlide].creator)
         prevTextSlide = currentTextSlide;
     } else if (currentTextSlide === prevTextSlide && overlayReady && !firstSlideAnimated) {
         animateTextChange(slideTitleElement, gallery[currentTextSlide].title);
         animateTextChange(slideDescriptionElement, gallery[currentTextSlide].description);
+        animateTextChange(slideDateElement, gallery[currentTextSlide].date);
+        animateTextChange(slideCreatorElement, gallery[currentTextSlide].creator)
         firstSlideAnimated = true;
     }
 
