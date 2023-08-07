@@ -252,6 +252,7 @@ const zeroTexture = createVideoTexture('zero');
 const tysonTexture = createVideoTexture('tyson');
 const africaBeatTexture = createVideoTexture('africaBeat');
 const easyTexture = createVideoTexture('easy');
+const louisTexture = createVideoTexture('louis');
 
 
 
@@ -343,6 +344,17 @@ const gallery = [
         source: "",
         mobilePic: "",
         creator: "",
+
+    },
+    {
+        element: document.getElementById('louis'),
+        texture: louisTexture,
+        title: "LONG LIVE",
+        description: `Kendrick performs Count Me Out and pays tribute to Virgil Abloh at Louis Vuitton Men's Spring-Summer 2023 Show.`,
+        date: "06/23/2022",
+        source: "https://www.youtube.com/watch?v=6SX50BOmArI&ab_channel=LouisVuitton",
+        mobilePic: "",
+        creator: "Louis Vuitton",
 
     }
 ]
