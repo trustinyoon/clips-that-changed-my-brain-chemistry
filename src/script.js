@@ -249,6 +249,7 @@ const kendrickTexture = createVideoTexture('kendrick');
 const zeroTexture = createVideoTexture('zero');
 const tysonTexture = createVideoTexture('tyson');
 const africaBeatTexture = createVideoTexture('africaBeat');
+const easyTexture = createVideoTexture('easy');
 
 
 
@@ -258,6 +259,13 @@ const gallery = [
         texture: kanyeTexture,
         title: "Prelaunch",
         description: `"I’m not gonna say there’s no way that I could fail, but with God’s blessings, it shouldn’t be no way for me to lose really." -  Kanye West in 2003 on his upcoming debut album, The College Dropout`
+    },
+    {
+        element: document.getElementById('easy'),
+        texture: easyTexture,
+        title: "Easy",
+        description: `Go easy on me, Father. I am still your child. And I need the chance to, 
+        Feel your love around me, And today I choose You, the way, the truth. So go easy on me.`
     },
     {
         element: document.getElementById('africaBeat'),

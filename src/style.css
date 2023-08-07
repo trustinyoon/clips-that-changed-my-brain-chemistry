@@ -92,15 +92,24 @@ video
     border: solid ivory .1rem; */
 }
 
+.scrollAndEnterContainer
+{
+    display: flex;
+    /* background-color: blue; */
+}
+
 .enterButton {
-    border: solid ivory 0.1rem;
+    border: solid ivory 0.07rem;
+    /* border-radius: 1rem; */
+    position: relative;
+    font-size: 1rem;
     padding: 1rem;
     text-align: center;
-    width: 10rem;
+    width: 8rem;
     overflow: hidden;
-    position: relative;
     color: ivory;
     text-shadow: none;
+    margin: 1rem;
 }
 
 .enterButton::before {
@@ -120,6 +129,65 @@ video
 .enterButton:hover::before {
     width: 100%;
 
+}
+
+.scrollInstructions
+{
+    font-size: .8rem;
+    text-align: center;
+    /* background-color: yellow; */
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scrollIconTop
+{
+    color: ivory;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid ivory;
+    margin: .3rem;
+    animation: bounceTop 1.5s infinite alternate;
+}
+
+.scrollIconBottom
+{
+    color: ivory;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid ivory;
+    margin: .3rem;
+    animation: bounceBottom 1.5s infinite alternate;
+}
+
+@keyframes bounceTop
+{
+    0%
+    {
+        transform: translateY(0);
+    }
+    100%
+    {
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes bounceBottom
+{
+    0%
+    {
+        transform: translateY(0);
+    }
+    100%
+    {
+        transform: translateY(2px);
+    }
 }
 
 .slideContainer
