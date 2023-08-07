@@ -26,6 +26,7 @@ body
     height: 100px;
     color: ivory;
     stroke: ivory;
+    opacity: 0;
     /* background-color: blue; */
 }
 

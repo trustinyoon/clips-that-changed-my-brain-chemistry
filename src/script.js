@@ -12,6 +12,9 @@ import VanillaTilt from 'vanilla-tilt'
  */
 // Debug
 
+let prevTextSlide = 0;
+let currentSlide = 0;
+let firstSlideAnimated = false;
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
@@ -123,7 +126,7 @@ enterButton.addEventListener('click', () => {
     gallery.forEach((slide) => {
         slide.element.play();
         // unmute all videos
-        slide.element.muted = false;
+        // slide.element.muted = false;
     });
     
     tl
@@ -140,6 +143,7 @@ enterButton.addEventListener('click', () => {
                 slideDescriptionElement.style.display = "block"
                 linkHoverReady = true
             } }, "-=.85")
+        .to(".audioButton", {duration: .8, opacity: 1}, "-=1")
 });
 
 slideTitleElement.addEventListener('mouseover', () => {
@@ -183,17 +187,13 @@ audioButton.addEventListener('click', () => {
     audioButtonOptions.power = !audioButtonOptions.power;
 
     if (audioButtonOptions.power) {
-        gallery.forEach((slide) => {
-            slide.element.muted = false;
-        });
+        gallery[currentSlide].element.muted = false;
         gsap.to(audioButtonOptions, {
             sinHeight: 4,
             stretch: 5,
             ease: "power2.easeInOut"})
     } else {
-        gallery.forEach((slide) => {
-            slide.element.muted = true;
-        });
+        gallery[currentSlide].element.muted = true;
         gsap.to(audioButtonOptions, {
             sinHeight: 0,
             stretch: 10,
@@ -277,7 +277,7 @@ const gallery = [
         element: document.getElementById('nujabes'),
         texture: nujabesTexture,
         title: "Nujabes",
-        description: `n`
+        description: `Father of lofi hip hop. `
     },
     {
         element: document.getElementById('kendrick'),
@@ -306,6 +306,15 @@ const gallery = [
 ]
 
 loadVideoData(gallery[0].element);
+
+if (audioButtonOptions.power) {
+    gallery[currentSlide].element.muted = false;
+    gsap.to(audioButtonOptions, {
+        sinHeight: 4,
+        stretch: 5,
+        ease: "power2.easeInOut"
+    })
+}
 
 // Material
 const material = new THREE.ShaderMaterial({
@@ -395,9 +404,6 @@ let position = 0;
 document.addEventListener('wheel', (e) => {
     speed += e.deltaY * 0.0003;
 })
-
-let prevTextSlide = 0;
-let firstSlideAnimated = false;
 
 const tick = () =>
 {
