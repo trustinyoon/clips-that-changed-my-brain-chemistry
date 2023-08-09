@@ -1,6 +1,4 @@
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import * as dat from 'lil-gui'
 import testVertexShader from './shaders/test/vertex.glsl'
 import testFragmentShader from './shaders/test/fragment.glsl'
 import { gsap } from 'gsap'
@@ -111,7 +109,7 @@ enterButton.addEventListener('mouseover', () => {
         scale: 5,
         backgroundColor: 'rgba(255, 255, 240, 1)',
         overwrite: 'auto',
-        })
+    })
 });
 
 enterButton.addEventListener('mouseout', () => {
@@ -120,7 +118,7 @@ enterButton.addEventListener('mouseout', () => {
         scale: 1,
         backgroundColor: 'ivory',
         overwrite: 'auto',
-        })
+    })
 });
 
 enterButton.addEventListener('click', () => {
@@ -130,22 +128,23 @@ enterButton.addEventListener('click', () => {
         // unmute all videos
         // slide.element.muted = false;
     });
-    
+
     tl
-        .to(".overlay", {duration: 3, backdropFilter: "blur(1px)"})
-        .to(".enterButton", {duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => {  } }, "-=3")
-        .to(".titleText", {duration: .5, fontSize: "1rem", ease: "sine.inOut"}, "-=1.5")
-        .to(".miscContainer", {duration: .8, top: "4rem", ease: "sine.inOut"}, "-=1.5")
-        .to(".miscContainer", {duration: .8, left: "4rem", ease: "sine.inOut"}, "-=1.5")
-        .to(".overlay", { duration: 1, backgroundColor: 'rgba(0,0,0,0', ease: "sine.inOut", onComplete: () => 
-            { 
+        .to(".overlay", { duration: 3, backdropFilter: "blur(1px)" })
+        .to(".enterButton", { duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => { } }, "-=3")
+        .to(".titleText", { duration: .5, fontSize: "1rem", ease: "sine.inOut" }, "-=1.5")
+        .to(".miscContainer", { duration: .8, top: "4rem", ease: "sine.inOut" }, "-=1.5")
+        .to(".miscContainer", { duration: .8, left: "4rem", ease: "sine.inOut" }, "-=1.5")
+        .to(".overlay", {
+            duration: 1, backgroundColor: 'rgba(0,0,0,0', ease: "sine.inOut", onComplete: () => {
                 overlayReady = true
                 enterButton.remove()
                 slideTitleElement.style.display = "block"
                 slideDescriptionElement.style.display = "block"
                 linkHoverReady = true
-            } }, "-=.85")
-        .to(".audioButton", {duration: .8, opacity: 1}, "-=1")
+            }
+        }, "-=.85")
+        .to(".audioButton", { duration: .8, opacity: 1 }, "-=1")
 });
 
 slideTitleElement.addEventListener('mouseover', () => {
@@ -154,7 +153,7 @@ slideTitleElement.addEventListener('mouseover', () => {
             duration: 0.2,
             scale: 5,
             overwrite: 'auto',
-            })
+        })
     }
 });
 
@@ -164,7 +163,7 @@ slideTitleElement.addEventListener('mouseout', () => {
             duration: 0.2,
             scale: 1,
             overwrite: 'auto',
-            })
+        })
     }
 });
 
@@ -183,7 +182,8 @@ audioButton.addEventListener('mouseout', () => {
         scale: 1,
         backgroundColor: 'ivory',
         overwrite: 'auto',
-    })});
+    })
+});
 
 audioButton.addEventListener('click', () => {
     audioButtonOptions.power = !audioButtonOptions.power;
@@ -193,13 +193,15 @@ audioButton.addEventListener('click', () => {
         gsap.to(audioButtonOptions, {
             sinHeight: 4,
             stretch: 5,
-            ease: "power2.easeInOut"})
+            ease: "power2.easeInOut"
+        })
     } else {
         gallery[currentSlide].element.muted = true;
         gsap.to(audioButtonOptions, {
             sinHeight: 0,
             stretch: 10,
-            ease: "power2.easeInOut"})
+            ease: "power2.easeInOut"
+        })
     }
 });
 
@@ -212,7 +214,7 @@ VanillaTilt.init(document.querySelector(".tilt"), {
  * Test mesh
  */
 // Geometry
-const geometry = new THREE.BoxGeometry(1,1)
+const geometry = new THREE.BoxGeometry(1, 1)
 
 /**
  * Textures
@@ -247,12 +249,13 @@ function createVideoTexture(videoElementID) {
 const kobeTexture = createVideoTexture('kobe');
 const kanyeTexture = createVideoTexture('kanye');
 const nujabesTexture = createVideoTexture('nujabes');
-const kendrickTexture = createVideoTexture('kendrick');
+const fkjTexture = createVideoTexture('fkj');
 const zeroTexture = createVideoTexture('zero');
 const tysonTexture = createVideoTexture('tyson');
-const africaBeatTexture = createVideoTexture('africaBeat');
 const easyTexture = createVideoTexture('easy');
 const louisTexture = createVideoTexture('louis');
+const dillaTexture = createVideoTexture('dilla');
+const daftpunkTexture = createVideoTexture('daftpunk');
 
 
 
@@ -261,10 +264,10 @@ const gallery = [
         element: document.getElementById('kanye'),
         texture: kanyeTexture,
         title: "Prelaunch",
-        description: `"I’m not gonna say there’s no way that I could fail, but with God’s blessings, it shouldn’t be no way for me to lose really." -  Kanye West in 2003 on his upcoming debut album, The College Dropout`,
+        description: `"I’m not gonna say there’s no way that I could fail, but with God’s blessings, it shouldn’t be no way for me to lose really." -  Kanye West in 2003 on his upcoming debut album, The College Dropout.`,
         date: "circa2002",
         source: "",
-        mobilePic: "",
+        mobilePic: "kanye.png",
         creator: "Jeen-Yuhs",
 
     },
@@ -276,74 +279,63 @@ const gallery = [
         Feel your love around me, And today I choose You, the way, the truth. So go easy on me.`,
         date: "11/28/2021",
         source: "https://www.youtube.com/watch?v=V9xlMDxrp0A&ab_channel=robbie",
-        mobilePic: "",
+        mobilePic: "easy.png",
         creator: "Sunday Service Choir",
-
-    },
-    {
-        element: document.getElementById('africaBeat'),
-        texture: africaBeatTexture,
-        title: "Roots",
-        description: `meep`,
-        date: "",
-        source: "",
-        mobilePic: "",
-        creator: "",
 
     },
     {
         element: document.getElementById('nujabes'),
         texture: nujabesTexture,
         title: "Nujabes",
-        description: `Perfect vibes paying tribute to the father of lofi hip hop. RIP.`,
+        description: `Perfect vibes paying tribute to Nujabes, the father of lofi hip hop.`,
         date: "03/02/2020",
         source: "https://www.youtube.com/watch?v=LcbTSLZl9hs&ab_channel=FutureArtsNow",
-        mobilePic: "",
+        mobilePic: "nujabes.png",
         creator: "Retro Ronin",
 
     },
     {
-        element: document.getElementById('kendrick'),
-        texture: kendrickTexture,
-        title: "Alright",
-        description: "We gon be alright",
-        date: "",
-        source: "",
-        mobilePic: "",
-        creator: "",
+        element: document.getElementById('fkj'),
+        texture: fkjTexture,
+        title: "FKJ",
+        description: "Jack of all trades, master of all. Essential listening in any focus session.",
+        date: "09/02/2020",
+        source: "https://www.youtube.com/watch?v=pfU0QORkRpY&list=LL&index=74&ab_channel=Fkj",
+        mobilePic: "fkj.png",
+        creator: "FKJ",
 
     },
     {
         element: document.getElementById('kobe'),
         texture: kobeTexture,
         title: "Job finished",
-        description: "Kobe drops 60 in his final game before retirement, scoring the Lakers' last 17 points to come back and win the game in 2016.",
-        date: "",
-        source: "",
-        mobilePic: "",
-        creator: "",
+        description: "Kobe drops 60 in his final game before retirement, scoring the Lakers' last 17 points to come back and win the game, further cementing GOAT status in my books.",
+        date: "04/13/2016",
+        source: "https://www.youtube.com/watch?v=Rx2inwUj_F0&t=280s&ab_channel=NBAHighlights",
+        mobilePic: "kobe.png",
+        creator: "NBA",
 
     },
     {
         element: document.getElementById('zero'),
         texture: zeroTexture,
         title: "Elysian",
-        description: "Caught the ebike bug right after moving to SF in Feb 2022.",
-        date: "",
+        description: "Caught the ebike bug right after moving to SF in Feb 2022. Validating my thesis that ebikes are the future of urban transportation.",
+        date: "03/13/2022",
         source: "",
-        mobilePic: "",
-        creator: "",
+        mobilePic: "zero.png",
+        creator: "Trustin Yoon",
 
     },
     {
         element: document.getElementById('tyson'),
         texture: tysonTexture,
         title: "Poet",
-        description: `"I trained probably, two weeks or three weeks for this for this fight. I had to bury my best friend, and I dedicate this fight—I wasn't going to fight—I dedicate this fight to him. I was gonna rip his heart out, I'm the best ever. I'm the most brutal and vicious and most ruthless champion there's ever been, there's no one can stop me. Lennox is a conqueror? No, I'm Alexander—he's no Alexander. I'm the best ever. There's never been anybody as ruthless. I'm Sonny Liston, I'm Jack Dempsey, there's no one like—I'm from their cloth. There's no one that can match me. My style is﻿ impetuous, my defense is impregnable, and I'm just ferocious. I want your heart, I want to eat his children. Praise be to Allah."`,
+        description: `"I trained probably, two weeks or three weeks for this for this fight. I had to bury my best friend, and I dedicate this fight—I wasn't going to fight—I dedicate this fight to him. I was gonna rip his heart out, I'm the best ever. I'm the most brutal and vicious and most ruthless champion there's ever been, there's no one can stop me. Lennox is a conqueror? No, I'm Alexander—he's no Alexander. I'm the best ever. There's never been anybody as ruthless. I'm Sonny Liston, I'm Jack Dempsey, there's no one like—I'm from their cloth. There's no one that can match me. My style is� impetuous, my defense is impregnable, and I'm just ferocious. I want your heart, I want to eat his children. Praise be to Allah."`,
         date: "06/24/2000",
-        source: "",
-        mobilePic: "",
-        creator: "",
+        source: "https://www.youtube.com/watch?v=KG-xC8Mu6SM&ab_channel=IsiMan85",
+        mobilePic: "tyson.png",
+        creator: "IsiMan85",
 
     },
     {
@@ -353,9 +345,29 @@ const gallery = [
         description: `Kendrick performs Count Me Out and pays tribute to Virgil Abloh at Louis Vuitton Men's Spring-Summer 2023 Show.`,
         date: "06/23/2022",
         source: "https://www.youtube.com/watch?v=6SX50BOmArI&ab_channel=LouisVuitton",
-        mobilePic: "",
+        mobilePic: "louis.png",
         creator: "Louis Vuitton",
 
+    },
+    {
+        element: document.getElementById('dilla'),
+        texture: dillaTexture,
+        title: "Dilla",
+        description: `J Dilla worked on the album while he was hospitalized and in deteriorating health due to a rare blood disease called thrombotic thrombocytopenic purpura (TTP). During his hospital stay, he created the album using a portable record player, a small sampler, and a few records. "Donuts" was released on February 7, 2006, just three days before J Dilla passed away on February 10, 2006, at the age of 32. The album's release coincided with his death, and it became an elegy for the legendary producer.`,
+        date: "06/19/2014",
+        source: "https://www.youtube.com/watch?v=NHn-G_YpQB0&ab_channel=StonesThrow",
+        mobilePic: "dilla.png",
+        creator: "Stones Throw",
+    },
+    {
+        element: document.getElementById('daftpunk'),
+        texture: daftpunkTexture,
+        title: "Giorgio",
+        description: `Giorgio Moroder's describes his start with the synthesizer that birthed electronic music on Daft Punk's "Giorgio by Moroder" from their 2013 album, Random Access Memories. The inclusion comes full circle, as Daft Punk built upon Giorgio's pioneering work to become the greatest electronic music artists of all time.`,
+        date: "02/24/2014",
+        source: "https://www.youtube.com/watch?v=zhl-Cs1-sG4&ab_channel=DaftPunkVEVO",
+        mobilePic: "daftpunk.png",
+        creator: "Daft Punk",
     }
 ]
 
@@ -377,7 +389,7 @@ const material = new THREE.ShaderMaterial({
     side: THREE.DoubleSide,
     uniforms: {
         u_time: { type: 'f', value: 0.0 },
-        u_pixels: {type: 'v2', value: new THREE.Vector2(window.innerWidth, window.innerHeight)},
+        u_pixels: { type: 'v2', value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
         u_uvRate1: { value: new THREE.Vector2(1, 1) },
         u_accel: { type: "v2", value: [.5, 2.0] },
         u_progress: { type: 'f', value: 0.0 },
@@ -394,7 +406,7 @@ scene.add(mesh)
 /**
  * Sizes
  */
-function resizer () {
+function resizer() {
     // Update sizes
     sizes.width = window.innerWidth
     sizes.height = window.innerHeight
@@ -417,8 +429,7 @@ function resizer () {
     mesh.scale.x = sizes.width / sizes.height;
 }
 
-window.addEventListener('resize', () =>
-{
+window.addEventListener('resize', () => {
     resizer()
 })
 
@@ -459,15 +470,14 @@ document.addEventListener('wheel', (e) => {
     speed += e.deltaY * 0.0003;
 })
 
-const tick = () =>
-{
+const tick = () => {
     // Update audio button
     audioButtonCtx.clearRect(0, 0, audioButtonOptions.width, audioButtonOptions.height);
     audioTime += 1;
     audioButtonCtx.beginPath();
     let increment = 0;
 
-    for (let i=0; i < audioButtonOptions.points; i++) {
+    for (let i = 0; i < audioButtonOptions.points; i++) {
         if (i < audioButtonOptions.points / 2) {
             increment += 0.1;
         } else {
@@ -491,7 +501,7 @@ const tick = () =>
     let dif = i - position;
 
     position += dif * 0.03;
-    if(Math.abs(i - position) < 0.001) {
+    if (Math.abs(i - position) < 0.001) {
         position = i;
     }
 
@@ -507,7 +517,7 @@ const tick = () =>
     let currentTextSlide = Math.abs(Math.round(position) % gallery.length);
 
     audioButtonOptions.power ? gallery[currentSlide].element.muted = false : gallery[currentSlide].element.muted = true;
-    
+
     // Mute all other videos
     for (let i = 0; i < gallery.length; i++) {
         if (i !== currentTextSlide) {
@@ -560,7 +570,7 @@ const tick = () =>
             },
         });
     }
-    
+
 
     material.uniforms.u_texture1.value = gallery[currentSlide].texture;
     material.uniforms.u_texture2.value = gallery[nextSlide].texture;
@@ -577,6 +587,3 @@ const tick = () =>
 }
 
 tick()
-
-// HTML
-resizer();
