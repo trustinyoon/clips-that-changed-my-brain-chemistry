@@ -331,7 +331,7 @@ const gallery = [
         element: document.getElementById('tyson'),
         texture: tysonTexture,
         title: "Poet",
-        description: `"I trained probably, two weeks or three weeks for this for this fight. I had to bury my best friend, and I dedicate this fight—I wasn't going to fight—I dedicate this fight to him. I was gonna rip his heart out, I'm the best ever. I'm the most brutal and vicious and most ruthless champion there's ever been, there's no one can stop me. Lennox is a conqueror? No, I'm Alexander—he's no Alexander. I'm the best ever. There's never been anybody as ruthless. I'm Sonny Liston, I'm Jack Dempsey, there's no one like—I'm from their cloth. There's no one that can match me. My style is� impetuous, my defense is impregnable, and I'm just ferocious. I want your heart, I want to eat his children. Praise be to Allah."`,
+        description: `"I trained probably, two weeks or three weeks for this for this fight. I had to bury my best friend, and I dedicate this fight—I wasn't going to fight—I dedicate this fight to him. I was gonna rip his heart out, I'm the best ever. I'm the most brutal and vicious and most ruthless champion there's ever been, there's no one can stop me. Lennox is a conqueror? No, I'm Alexander—he's no Alexander. I'm the best ever. There's never been anybody as ruthless. I'm Sonny Liston, I'm Jack Dempsey, there's no one like—I'm from their cloth. There's no one that can match me. My style is impetuous, my defense is impregnable, and I'm just ferocious. I want your heart, I want to eat his children. Praise be to Allah."`,
         date: "06/24/2000",
         source: "https://www.youtube.com/watch?v=KG-xC8Mu6SM&ab_channel=IsiMan85",
         mobilePic: "tyson.png",
@@ -423,7 +423,6 @@ function resizer() {
 
     let dist = camera.position.z - mesh.position.z;
     let height = 1;
-    // camera.fov = 2 * (180 / Math.PI) * Math.atan(height / (2 * dist));
 
     const aspectRatio = sizes.width / sizes.height;
     mesh.scale.x = sizes.width / sizes.height;
@@ -587,3 +586,6 @@ const tick = () => {
 }
 
 tick()
+
+//HTML
+resizer();
