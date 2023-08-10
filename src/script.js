@@ -132,6 +132,7 @@ if (isMobile)
     });
     
     const enterButton = document.querySelector('.enterButton');
+    const scrollAndEnterContainer = document.querySelector('.scrollAndEnterContainer');
     
     enterButton.addEventListener('mouseover', () => {
         //gsap animation to make cursorstylewidth bigger
@@ -162,14 +163,15 @@ if (isMobile)
     
         tl
             .to(".overlay", { duration: 3, backdropFilter: "blur(1px)" })
-            .to(".enterButton", { duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => { } }, "-=3")
+            .to(".scrollAndEnterContainer", { duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => { } }, "-=3")
             .to(".titleText", { duration: .5, fontSize: "1rem", ease: "sine.inOut" }, "-=1.5")
             .to(".miscContainer", { duration: .8, top: "4rem", ease: "sine.inOut" }, "-=1.5")
             .to(".miscContainer", { duration: .8, left: "4rem", ease: "sine.inOut" }, "-=1.5")
             .to(".overlay", {
                 duration: 1, backgroundColor: 'rgba(0,0,0,0', ease: "sine.inOut", onComplete: () => {
                     overlayReady = true
-                    enterButton.remove()
+                    scrollAndEnterContainer.remove()
+                    // enterButton.remove()
                     slideTitleElement.style.display = "block"
                     slideDescriptionElement.style.display = "block"
                     linkHoverReady = true
