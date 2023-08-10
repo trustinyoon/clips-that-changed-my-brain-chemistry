@@ -58,13 +58,12 @@ if (isMobile)
     
     // HTML Elements
     let linkHoverReady = false;
+    let noButtonHover = false;
     
     const slideTitleElement = document.getElementsByClassName("slideTitle")[0];
     const slideDescriptionElement = document.getElementsByClassName("slideDescription")[0];
     const slideDateElement = document.querySelector(".slideDate");
     const slideCreatorElement = document.querySelector(".slideCreator");
-    const slideContainer = document.querySelector('.slideContainer');
-    const miscContainer = document.querySelector('.miscContainer');
     const audioButton = document.querySelector('.audioButton');
     
     let audioButtonOptions = {
@@ -136,12 +135,14 @@ if (isMobile)
     
     enterButton.addEventListener('mouseover', () => {
         //gsap animation to make cursorstylewidth bigger
-        gsap.to(customCursor, {
-            duration: 0.2,
-            scale: 5,
-            backgroundColor: 'rgba(255, 255, 240, 1)',
-            overwrite: 'auto',
-        })
+        if (!noButtonHover) {
+            gsap.to(customCursor, {
+                duration: 0.2,
+                scale: 5,
+                backgroundColor: 'rgba(255, 255, 240, 1)',
+                overwrite: 'auto',
+            })
+        }
     });
     
     enterButton.addEventListener('mouseout', () => {
@@ -163,14 +164,13 @@ if (isMobile)
     
         tl
             .to(".overlay", { duration: 3, backdropFilter: "blur(1px)" })
-            .to(".scrollAndEnterContainer", { duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => { } }, "-=3")
+            .to(".scrollAndEnterContainer", { duration: .3, opacity: 0, ease: "sine.inOut", onComplete: () => { noButtonHover = true } }, "-=3")
             .to(".titleText", { duration: .5, fontSize: "1rem", ease: "sine.inOut" }, "-=1.5")
             .to(".miscContainer", { duration: .8, top: "4rem", ease: "sine.inOut" }, "-=1.5")
             .to(".miscContainer", { duration: .8, left: "4rem", ease: "sine.inOut" }, "-=1.5")
             .to(".overlay", {
                 duration: 1, backgroundColor: 'rgba(0,0,0,0', ease: "sine.inOut", onComplete: () => {
                     overlayReady = true
-                    scrollAndEnterContainer.remove()
                     // enterButton.remove()
                     slideTitleElement.style.display = "block"
                     slideDescriptionElement.style.display = "block"
@@ -279,22 +279,22 @@ if (isMobile)
         return videoTexture;
     }
     
-    const kobeTexture = createVideoTexture('kobe');
+    // const kobeTexture = createVideoTexture('kobe');
     const kanyeTexture = createVideoTexture('kanye');
     const nujabesTexture = createVideoTexture('nujabes');
     const fkjTexture = createVideoTexture('fkj');
-    const zeroTexture = createVideoTexture('zero');
+    // const zeroTexture = createVideoTexture('zero');
     const tysonTexture = createVideoTexture('tyson');
     const easyTexture = createVideoTexture('easy');
     const louisTexture = createVideoTexture('louis');
     const dillaTexture = createVideoTexture('dilla');
     const daftpunkTexture = createVideoTexture('daftpunk');
     
-    const kobeImage = new THREE.TextureLoader().load('kobe.png');
+    // const kobeImage = new THREE.TextureLoader().load('kobe.png');
     const kanyeImage = new THREE.TextureLoader().load('kanye.png');
     const nujabesImage = new THREE.TextureLoader().load('nujabes.png');
     const fkjImage = new THREE.TextureLoader().load('fkj.png');
-    const zeroImage = new THREE.TextureLoader().load('zero.png');
+    // const zeroImage = new THREE.TextureLoader().load('zero.png');
     const tysonImage = new THREE.TextureLoader().load('tyson.png');
     const easyImage = new THREE.TextureLoader().load('easy.png');
     const louisImage = new THREE.TextureLoader().load('louis.png');

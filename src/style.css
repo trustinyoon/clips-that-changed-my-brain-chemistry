@@ -85,7 +85,7 @@ video
 
 .titleText
 {
-    /* position: absolute; */
+    position: relative;
     /* width: 100%; */
     font-size: 10rem;
     text-align: center;
@@ -96,7 +96,7 @@ video
 .scrollAndEnterContainer
 {
     display: flex;
-    /* background-color: blue; */
+    position: relative;
 }
 
 .enterButton {
