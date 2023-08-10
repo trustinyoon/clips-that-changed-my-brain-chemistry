@@ -357,28 +357,28 @@ if (isMobile)
             creator: "FKJ",
     
         },
-        {
-            element: document.getElementById('kobe'),
-            texture: isMobile ? kobeImage : kobeTexture,
-            title: "Job finished",
-            description: "Kobe drops 60 in his final game before retirement, scoring the Lakers' last 17 points to come back and win the game, further cementing GOAT status in my books.",
-            date: "04/13/2016",
-            source: "https://www.youtube.com/watch?v=Rx2inwUj_F0&t=280s&ab_channel=NBAHighlights",
-            mobilePic: "kobe.png",
-            creator: "NBA",
+        // {
+        //     element: document.getElementById('kobe'),
+        //     texture: isMobile ? kobeImage : kobeTexture,
+        //     title: "Job finished",
+        //     description: "Kobe drops 60 in his final game before retirement, scoring the Lakers' last 17 points to come back and win the game, further cementing GOAT status in my books.",
+        //     date: "04/13/2016",
+        //     source: "https://www.youtube.com/watch?v=Rx2inwUj_F0&t=280s&ab_channel=NBAHighlights",
+        //     mobilePic: "kobe.png",
+        //     creator: "NBA",
     
-        },
-        {
-            element: document.getElementById('zero'),
-            texture: isMobile ? zeroImage : zeroTexture,
-            title: "Elysian",
-            description: "Caught the ebike bug right after moving to SF in Feb 2022. Validating my thesis that ebikes are the future of urban transportation.",
-            date: "03/13/2022",
-            source: "",
-            mobilePic: "zero.png",
-            creator: "Trustin Yoon",
+        // },
+        // {
+        //     element: document.getElementById('zero'),
+        //     texture: isMobile ? zeroImage : zeroTexture,
+        //     title: "Elysian",
+        //     description: "Caught the ebike bug right after moving to SF in Feb 2022. Validating my thesis that ebikes are the future of urban transportation.",
+        //     date: "03/13/2022",
+        //     source: "",
+        //     mobilePic: "zero.png",
+        //     creator: "Trustin Yoon",
     
-        },
+        // },
         {
             element: document.getElementById('tyson'),
             texture: isMobile ? tysonImage : tysonTexture,
