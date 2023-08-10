@@ -18,7 +18,11 @@ function removeVideosOnMobile() {
     }
 }
 
-if (isMobile) removeVideosOnMobile()
+if (isMobile) 
+{
+    removeVideosOnMobile()
+    window.location.href = 'mobile.html'
+}
 
 let prevTextSlide = 0;
 let currentSlide = 0;
