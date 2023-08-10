@@ -9,6 +9,16 @@ import VanillaTilt from 'vanilla-tilt'
  * Base
  */
 // Debug
+let isMobile = window.innerWidth < 600;
+
+function removeVideosOnMobile() {
+    const videos = document.querySelectorAll('video');
+    for (let i = 0; i < videos.length; i++) {
+        videos[i].remove();
+    }
+}
+
+if (isMobile) removeVideosOnMobile()
 
 let prevTextSlide = 0;
 let currentSlide = 0;
@@ -257,12 +267,21 @@ const louisTexture = createVideoTexture('louis');
 const dillaTexture = createVideoTexture('dilla');
 const daftpunkTexture = createVideoTexture('daftpunk');
 
-
+const kobeImage = new THREE.TextureLoader().load('kobe.png');
+const kanyeImage = new THREE.TextureLoader().load('kanye.png');
+const nujabesImage = new THREE.TextureLoader().load('nujabes.png');
+const fkjImage = new THREE.TextureLoader().load('fkj.png');
+const zeroImage = new THREE.TextureLoader().load('zero.png');
+const tysonImage = new THREE.TextureLoader().load('tyson.png');
+const easyImage = new THREE.TextureLoader().load('easy.png');
+const louisImage = new THREE.TextureLoader().load('louis.png');
+const dillaImage = new THREE.TextureLoader().load('dilla.png');
+const daftpunkImage = new THREE.TextureLoader().load('daftpunk.png');
 
 const gallery = [
     {
         element: document.getElementById('kanye'),
-        texture: kanyeTexture,
+        texture: isMobile ? kanyeImage : kanyeTexture,
         title: "Prelaunch",
         description: `"I’m not gonna say there’s no way that I could fail, but with God’s blessings, it shouldn’t be no way for me to lose really." -  Kanye West in 2003 on his upcoming debut album, The College Dropout.`,
         date: "circa2002",
@@ -273,7 +292,7 @@ const gallery = [
     },
     {
         element: document.getElementById('easy'),
-        texture: easyTexture,
+        texture: isMobile ? easyImage : easyTexture,
         title: "Easy",
         description: `Go easy on me, Father. I am still your child. And I need the chance to, 
         Feel your love around me, And today I choose You, the way, the truth. So go easy on me.`,
@@ -285,7 +304,7 @@ const gallery = [
     },
     {
         element: document.getElementById('nujabes'),
-        texture: nujabesTexture,
+        texture: isMobile ? nujabesImage : nujabesTexture,
         title: "Nujabes",
         description: `Perfect vibes paying tribute to Nujabes, the father of lofi hip hop.`,
         date: "03/02/2020",
@@ -296,7 +315,7 @@ const gallery = [
     },
     {
         element: document.getElementById('fkj'),
-        texture: fkjTexture,
+        texture: isMobile ? fkjImage : fkjTexture,
         title: "FKJ",
         description: "Jack of all trades, master of all. Essential listening in any focus session.",
         date: "09/02/2020",
@@ -307,7 +326,7 @@ const gallery = [
     },
     {
         element: document.getElementById('kobe'),
-        texture: kobeTexture,
+        texture: isMobile ? kobeImage : kobeTexture,
         title: "Job finished",
         description: "Kobe drops 60 in his final game before retirement, scoring the Lakers' last 17 points to come back and win the game, further cementing GOAT status in my books.",
         date: "04/13/2016",
@@ -318,7 +337,7 @@ const gallery = [
     },
     {
         element: document.getElementById('zero'),
-        texture: zeroTexture,
+        texture: isMobile ? zeroImage : zeroTexture,
         title: "Elysian",
         description: "Caught the ebike bug right after moving to SF in Feb 2022. Validating my thesis that ebikes are the future of urban transportation.",
         date: "03/13/2022",
@@ -329,7 +348,7 @@ const gallery = [
     },
     {
         element: document.getElementById('tyson'),
-        texture: tysonTexture,
+        texture: isMobile ? tysonImage : tysonTexture,
         title: "Poet",
         description: `"I trained probably, two weeks or three weeks for this for this fight. I had to bury my best friend, and I dedicate this fight—I wasn't going to fight—I dedicate this fight to him. I was gonna rip his heart out, I'm the best ever. I'm the most brutal and vicious and most ruthless champion there's ever been, there's no one can stop me. Lennox is a conqueror? No, I'm Alexander—he's no Alexander. I'm the best ever. There's never been anybody as ruthless. I'm Sonny Liston, I'm Jack Dempsey, there's no one like—I'm from their cloth. There's no one that can match me. My style is impetuous, my defense is impregnable, and I'm just ferocious. I want your heart, I want to eat his children. Praise be to Allah."`,
         date: "06/24/2000",
@@ -340,7 +359,7 @@ const gallery = [
     },
     {
         element: document.getElementById('louis'),
-        texture: louisTexture,
+        texture: isMobile ? louisImage : louisTexture, 
         title: "LONG LIVE",
         description: `Kendrick performs Count Me Out and pays tribute to Virgil Abloh at Louis Vuitton Men's Spring-Summer 2023 Show.`,
         date: "06/23/2022",
@@ -351,7 +370,7 @@ const gallery = [
     },
     {
         element: document.getElementById('dilla'),
-        texture: dillaTexture,
+        texture: isMobile ? dillaImage : dillaTexture,      
         title: "Dilla",
         description: `J Dilla worked on the album while he was hospitalized and in deteriorating health due to a rare blood disease called thrombotic thrombocytopenic purpura (TTP). During his hospital stay, he created the album using a portable record player, a small sampler, and a few records. "Donuts" was released on February 7, 2006, just three days before J Dilla passed away on February 10, 2006, at the age of 32. The album's release coincided with his death, and it became an elegy for the legendary producer.`,
         date: "06/19/2014",
@@ -361,7 +380,7 @@ const gallery = [
     },
     {
         element: document.getElementById('daftpunk'),
-        texture: daftpunkTexture,
+        texture: isMobile ? daftpunkImage : daftpunkTexture, 
         title: "Giorgio",
         description: `Giorgio Moroder's describes his start with the synthesizer that birthed electronic music on Daft Punk's "Giorgio by Moroder" from their 2013 album, Random Access Memories. The inclusion comes full circle, as Daft Punk built upon Giorgio's pioneering work to become the greatest electronic music artists of all time.`,
         date: "02/24/2014",
