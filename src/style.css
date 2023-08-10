@@ -308,10 +308,6 @@ video
     justify-content: center;
     height: 100vh;
     font-size: 1rem;
-}
-
-p
-{
+    padding: 1rem;
     text-align: center;
-    margin: 1rem;
 }
