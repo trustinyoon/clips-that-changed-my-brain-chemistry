@@ -303,6 +303,17 @@ if (isMobile)
     
     const gallery = [
         {
+            element: document.getElementById('louis'),
+            texture: isMobile ? louisImage : louisTexture,
+            title: "LONG LIVE",
+            description: `Kendrick performs Count Me Out and pays tribute to Virgil Abloh at Louis Vuitton Men's Spring-Summer 2023 Show.`,
+            date: "06/23/2022",
+            source: "https://www.youtube.com/watch?v=6SX50BOmArI&ab_channel=LouisVuitton",
+            mobilePic: "louis.png",
+            creator: "Louis Vuitton",
+
+        },
+        {
             element: document.getElementById('kanye'),
             texture: isMobile ? kanyeImage : kanyeTexture,
             title: "Prelaunch",
@@ -311,7 +322,6 @@ if (isMobile)
             source: "",
             mobilePic: "kanye.png",
             creator: "Jeen-Yuhs",
-    
         },
         {
             element: document.getElementById('easy'),
@@ -378,17 +388,6 @@ if (isMobile)
             source: "https://www.youtube.com/watch?v=KG-xC8Mu6SM&ab_channel=IsiMan85",
             mobilePic: "tyson.png",
             creator: "IsiMan85",
-    
-        },
-        {
-            element: document.getElementById('louis'),
-            texture: isMobile ? louisImage : louisTexture, 
-            title: "LONG LIVE",
-            description: `Kendrick performs Count Me Out and pays tribute to Virgil Abloh at Louis Vuitton Men's Spring-Summer 2023 Show.`,
-            date: "06/23/2022",
-            source: "https://www.youtube.com/watch?v=6SX50BOmArI&ab_channel=LouisVuitton",
-            mobilePic: "louis.png",
-            creator: "Louis Vuitton",
     
         },
         {
