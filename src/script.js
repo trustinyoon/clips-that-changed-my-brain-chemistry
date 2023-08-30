@@ -304,7 +304,7 @@ if (isMobile)
     const gallery = [
         {
             element: document.getElementById('louis'),
-            texture: isMobile ? louisImage : louisTexture,
+            texture: louisTexture,
             title: "LONG LIVE",
             description: `Kendrick performs Count Me Out and pays tribute to Virgil Abloh at Louis Vuitton Men's Spring-Summer 2023 Show.`,
             date: "06/23/2022",
@@ -315,7 +315,7 @@ if (isMobile)
         },
         {
             element: document.getElementById('kanye'),
-            texture: isMobile ? kanyeImage : kanyeTexture,
+            texture: kanyeTexture,
             title: "Prelaunch",
             description: `"I’m not gonna say there’s no way that I could fail, but with God’s blessings, it shouldn’t be no way for me to lose really." -  Kanye West in 2003 on his upcoming debut album, The College Dropout.`,
             date: "circa2002",
@@ -325,7 +325,7 @@ if (isMobile)
         },
         {
             element: document.getElementById('easy'),
-            texture: isMobile ? easyImage : easyTexture,
+            texture: easyTexture,
             title: "Easy",
             description: `Go easy on me, Father. I am still your child. And I need the chance to, 
             Feel your love around me, And today I choose You, the way, the truth. So go easy on me.`,
@@ -337,7 +337,7 @@ if (isMobile)
         },
         {
             element: document.getElementById('nujabes'),
-            texture: isMobile ? nujabesImage : nujabesTexture,
+            texture: nujabesTexture,
             title: "Nujabes",
             description: `Perfect vibes paying tribute to Nujabes, the father of lofi hip hop.`,
             date: "03/02/2020",
@@ -348,7 +348,7 @@ if (isMobile)
         },
         {
             element: document.getElementById('fkj'),
-            texture: isMobile ? fkjImage : fkjTexture,
+            texture: fkjTexture,
             title: "FKJ",
             description: "Jack of all trades, master of all. Essential listening in any focus session.",
             date: "09/02/2020",
@@ -359,7 +359,7 @@ if (isMobile)
         },
         // {
         //     element: document.getElementById('kobe'),
-        //     texture: isMobile ? kobeImage : kobeTexture,
+        //     texture: kobeTexture,
         //     title: "Job finished",
         //     description: "Kobe drops 60 in his final game before retirement, scoring the Lakers' last 17 points to come back and win the game, further cementing GOAT status in my books.",
         //     date: "04/13/2016",
@@ -368,20 +368,9 @@ if (isMobile)
         //     creator: "NBA",
     
         // },
-        // {
-        //     element: document.getElementById('zero'),
-        //     texture: isMobile ? zeroImage : zeroTexture,
-        //     title: "Elysian",
-        //     description: "Caught the ebike bug right after moving to SF in Feb 2022. Validating my thesis that ebikes are the future of urban transportation.",
-        //     date: "03/13/2022",
-        //     source: "",
-        //     mobilePic: "zero.png",
-        //     creator: "Trustin Yoon",
-    
-        // },
         {
             element: document.getElementById('tyson'),
-            texture: isMobile ? tysonImage : tysonTexture,
+            texture: tysonTexture,
             title: "Poet",
             description: `"I trained probably, two weeks or three weeks for this for this fight. I had to bury my best friend, and I dedicate this fight—I wasn't going to fight—I dedicate this fight to him. I was gonna rip his heart out, I'm the best ever. I'm the most brutal and vicious and most ruthless champion there's ever been, there's no one can stop me. Lennox is a conqueror? No, I'm Alexander—he's no Alexander. I'm the best ever. There's never been anybody as ruthless. I'm Sonny Liston, I'm Jack Dempsey, there's no one like—I'm from their cloth. There's no one that can match me. My style is impetuous, my defense is impregnable, and I'm just ferocious. I want your heart, I want to eat his children. Praise be to Allah."`,
             date: "06/24/2000",
@@ -392,7 +381,7 @@ if (isMobile)
         },
         {
             element: document.getElementById('dilla'),
-            texture: isMobile ? dillaImage : dillaTexture,      
+            texture: dillaTexture,      
             title: "Dilla",
             description: `J Dilla worked on the album while he was hospitalized and in deteriorating health due to a rare blood disease called thrombotic thrombocytopenic purpura (TTP). During his hospital stay, he created the album using a portable record player, a small sampler, and a few records. "Donuts" was released on February 7, 2006, just three days before J Dilla passed away on February 10, 2006, at the age of 32. The album's release coincided with his death, and it became an elegy for the legendary producer.`,
             date: "06/19/2014",
@@ -400,16 +389,16 @@ if (isMobile)
             mobilePic: "dilla.png",
             creator: "Stones Throw",
         },
-        {
-            element: document.getElementById('daftpunk'),
-            texture: isMobile ? daftpunkImage : daftpunkTexture, 
-            title: "Giorgio",
-            description: `Giorgio Moroder's describes his start with the synthesizer that birthed electronic music on Daft Punk's "Giorgio by Moroder" from their 2013 album, Random Access Memories. The inclusion comes full circle, as Daft Punk built upon Giorgio's pioneering work to become the greatest electronic music artists of all time.`,
-            date: "02/24/2014",
-            source: "https://www.youtube.com/watch?v=zhl-Cs1-sG4&ab_channel=DaftPunkVEVO",
-            mobilePic: "daftpunk.png",
-            creator: "Daft Punk",
-        }
+        // {
+        //     element: document.getElementById('daftpunk'),
+        //     texture: daftpunkTexture, 
+        //     title: "Giorgio",
+        //     description: `Giorgio Moroder's describes his start with the synthesizer that birthed electronic music on Daft Punk's "Giorgio by Moroder" from their 2013 album, Random Access Memories. The inclusion comes full circle, as Daft Punk built upon Giorgio's pioneering work to become the greatest electronic music artists of all time.`,
+        //     date: "02/24/2014",
+        //     source: "https://www.youtube.com/watch?v=zhl-Cs1-sG4&ab_channel=DaftPunkVEVO",
+        //     mobilePic: "daftpunk.png",
+        //     creator: "Daft Punk",
+        // }
     ]
     
     loadVideoData(gallery[0].element);
