@@ -288,18 +288,7 @@ if (isMobile)
     const easyTexture = createVideoTexture('easy');
     const louisTexture = createVideoTexture('louis');
     const dillaTexture = createVideoTexture('dilla');
-    const daftpunkTexture = createVideoTexture('daftpunk');
-    
-    // const kobeImage = new THREE.TextureLoader().load('kobe.png');
-    const kanyeImage = new THREE.TextureLoader().load('kanye.png');
-    const nujabesImage = new THREE.TextureLoader().load('nujabes.png');
-    const fkjImage = new THREE.TextureLoader().load('fkj.png');
-    // const zeroImage = new THREE.TextureLoader().load('zero.png');
-    const tysonImage = new THREE.TextureLoader().load('tyson.png');
-    const easyImage = new THREE.TextureLoader().load('easy.png');
-    const louisImage = new THREE.TextureLoader().load('louis.png');
-    const dillaImage = new THREE.TextureLoader().load('dilla.png');
-    const daftpunkImage = new THREE.TextureLoader().load('daftpunk.png');
+    // const daftpunkTexture = createVideoTexture('daftpunk');
     
     const gallery = [
         {
